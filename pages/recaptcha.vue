@@ -3,47 +3,29 @@
     <div>
       <logo />
       <h1 class="title">
-        reCAPTCHA v3
+        reCAPTCHA v2
       </h1>
       <h2 class="subtitle">
         My prime Nuxt.js project
       </h2>
       <div class="links">
-        <nuxt-link to="/recaptcha" class="button--green">
-          reCAPTCHA v2
+        <nuxt-link to="/" class="button--green">
+          reCAPTCHA v3
         </nuxt-link>
-        <button class="button--grey" @click="recaptcha">
-          Execute recaptcha
-        </button>
+        <vue-recaptcha sitekey="Your key here"></vue-recaptcha>
       </div>
     </div>
   </div>
 </template>
 
 <script>
-import Vue from 'vue'
-import { VueReCaptcha } from 'vue-recaptcha-v3'
+import VueRecaptcha from 'vue-recaptcha'
 import Logo from '~/components/Logo.vue'
-
-// For more options see below
-Vue.use(VueReCaptcha, { siteKey: '<site key>' })
 
 export default {
   components: {
-    Logo
-  },
-  methods: {
-    async recaptcha() {
-      // (optional) Wait until recaptcha has been loaded.
-      await this.$recaptchaLoaded()
-
-      // Execute reCAPTCHA with action "login".
-      const token = await this.$recaptcha('login')
-
-      // Do stuff with the received token.
-      // eslint-disable-next-line no-console
-      console.log(token)
-    }
+    Logo,
+    VueRecaptcha
   }
 }
 </script>
